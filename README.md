@@ -1,10 +1,9 @@
+
 # 2026-2027 Örgün Eğitim Öğretim Dönemi Mesleki ve Teknik Anadolu Lisesi 9. Sınıf Programlama Temelleri
 
+#### Oluşturan: Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
+
 # Çalışma Defteri
-
-### Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
-#### Kırklareli Üniversitesi Yazılım Mühendisliği mezunu ####Tekirdağ Namık Kemal Üniversitesi Bilgisayar Mühendisliği Yüksek Lisans Öğrencisi
-
 9. sınıf **Programlama Temelleri** dersi için hazırlanmış etkileşimli bir çalışma sayfasıdır. Konuyu okuyarak anlamanı, örnekleri adım adım izlemeni ve öğrendiklerini kendi başına denemeni amaçlar.
 
 ## 🔗 Çalışma sayfasına git
