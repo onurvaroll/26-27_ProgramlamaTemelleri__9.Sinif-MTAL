@@ -2,8 +2,8 @@
 
 # Çalışma Defteri
 
-## Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
-### Kırklareli Üniversitesi Yazılım Mühendisliği mezunu\nTekirdağ Namık Kemal Üniversitesi Bilgisayar Mühendisliği Yüksek Lisans Öğrencisi
+### Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
+#### Kırklareli Üniversitesi Yazılım Mühendisliği mezunu ####Tekirdağ Namık Kemal Üniversitesi Bilgisayar Mühendisliği Yüksek Lisans Öğrencisi
 
 9. sınıf **Programlama Temelleri** dersi için hazırlanmış etkileşimli bir çalışma sayfasıdır. Konuyu okuyarak anlamanı, örnekleri adım adım izlemeni ve öğrendiklerini kendi başına denemeni amaçlar.
 
