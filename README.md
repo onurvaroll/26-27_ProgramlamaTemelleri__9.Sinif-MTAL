@@ -52,15 +52,9 @@
 
 Bu sayfa, ders kitabındaki konulara dayalı **yardımcı bir çalışma materyalidir**; ders kitabının yerini tutmaz. Soru ve çözümler özgün olarak hazırlanmıştır. Sınıfta ders içi etkinlik, ödev veya tekrar kaynağı olarak kullanabilirsiniz. Hata veya öneri için **Issues** sekmesinden bildirimde bulunabilirsiniz.
 
-## Teknik bilgi
-
-- Tek bir `index.html` dosyasından oluşur; ek kurulum gerektirmez.
-- Telefon, tablet ve bilgisayarda çalışır, koyu temayı destekler.
-- GitHub Pages ile yayınlanmıştır.
-
 ## Kaynakça
 
-- Millî Eğitim Bakanlığı, *Programlama Temelleri* 9. Sınıf Ders Kitabı, 1. Öğrenme Birimi: Algoritmik Düşünme ve Tasarım.
+- Millî Eğitim Bakanlığı, *Programlama Temelleri* 9. Sınıf Ders Kitabı
 
 ---
 
