@@ -1,0 +1,1 @@
+# 26-27-Programlama-Temelleri-9.Sinif--MTAL-
