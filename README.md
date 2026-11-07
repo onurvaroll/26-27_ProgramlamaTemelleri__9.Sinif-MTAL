@@ -1,7 +1,7 @@
 
 # 2026-2027 Örgün Eğitim Öğretim Dönemi Mesleki ve Teknik Anadolu Lisesi 9. Sınıf Programlama Temelleri
 
-#### Oluşturan: Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
+### Oluşturan: Onur VAROL - Bilişim Öğretmeni (Şehit Binbaşı Bedir Karabıyık MTAL)
 
 # Çalışma Defteri
 9. sınıf **Programlama Temelleri** dersi için hazırlanmış etkileşimli bir çalışma sayfasıdır. Konuyu okuyarak anlamanı, örnekleri adım adım izlemeni ve öğrendiklerini kendi başına denemeni amaçlar.
@@ -18,6 +18,7 @@
 
 ## Python Nedir?
 - Python'ın ne işe yaradığına dair tüm bilgilere buradan ulaşabilirsiniz:
+  
 **👉 [Python Nedir?](https://github.com/onurvaroll/26-27_ProgramlamaTemelleri__9.Sinif-MTAL/tree/main/python_hakkında)**
 
 ## Neler var?
