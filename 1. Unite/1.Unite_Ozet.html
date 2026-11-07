@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algoritmik Düşünme ve Tasarım – Çalışma Defteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2b3f;--mut:#5b6b80;--line:#d5dde8;--g:#1d8f6a;--gb:#e3f5ee;--b:#2d5fa8;--bb:#e6eefa;--r:#c9473f;--rb:#fbe9e7;--grid:rgba(45,95,168,.07)}
+@media(prefers-color-scheme:dark){:root{--bg:#121923;--card:#1a2431;--ink:#e6edf6;--mut:#9fb0c4;--line:#2c3a4d;--g:#4cc79c;--gb:#173a30;--b:#7fa9ea;--bb:#1c3050;--r:#f08b83;--rb:#3d2220;--grid:rgba(127,169,234,.07)}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.65 Lexend,system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg) linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 28px;padding-top:env(safe-area-inset-top,0)}
+header{padding:2.2rem 1rem 1rem;max-width:860px;margin:auto}
+h1{font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.2;margin:.2rem 0}
+h2{font-size:1.4rem;margin:0 0 .6rem;color:var(--b)}h3{font-size:1.05rem;margin:1.2rem 0 .3rem}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:.5rem 1rem;display:flex;gap:.4rem;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--ink);text-decoration:none;font-size:.85rem;padding:.3rem .7rem;border:1px solid var(--line);border-radius:99px}
+nav a:hover,nav a:focus-visible{background:var(--bb);outline:2px solid var(--b)}
+main{max-width:860px;margin:auto;padding:0 1rem 4rem}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.3rem;margin:1.2rem 0;scroll-margin-top:3.6rem}
+p{margin:.5rem 0}.note,.warn,.tip{border-left:4px solid var(--b);background:var(--bb);padding:.6rem .9rem;margin:.8rem 0;border-radius:0 8px 8px 0}
+.warn{border-color:var(--r);background:var(--rb)}.tip{border-color:var(--g);background:var(--gb)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.6rem 0}th,td{border:1px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}th{background:var(--bb)}
+.sc{overflow-x:auto}
+code,pre{font-family:ui-monospace,Consolas,monospace;font-size:.88rem}pre{background:var(--bb);padding:.7rem .9rem;border-radius:8px;overflow-x:auto;margin:.5rem 0}
+code{background:var(--bb);padding:0 .3rem;border-radius:4px}
+button{font:inherit;font-size:.9rem;background:var(--b);color:#fff;border:0;border-radius:8px;padding:.45rem .9rem;cursor:pointer}
+button:hover{filter:brightness(1.1)}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+button.o{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+input{font:inherit;width:5rem;padding:.3rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+details{border:1px solid var(--line);border-radius:8px;margin:.6rem 0;padding:.5rem .9rem}summary{cursor:pointer;font-weight:600}
+.lab{background:var(--gb);border:1px dashed var(--g);border-radius:8px;padding:.8rem;margin:.8rem 0}
+.q{margin:1rem 0;padding-bottom:.8rem;border-bottom:1px solid var(--line)}.q button{display:block;width:100%;text-align:left;margin:.3rem 0;background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.q button.ok{background:var(--gb);border-color:var(--g)}.q button.no{background:var(--rb);border-color:var(--r)}.fb{font-size:.9rem;color:var(--mut);min-height:1.2em}
+svg{max-width:100%;height:auto}svg text{font:12px Lexend,sans-serif;fill:var(--ink)}
+.t{fill:var(--gb);stroke:var(--g)}.io{fill:var(--bb);stroke:var(--b)}.p{fill:var(--card);stroke:var(--b)}.d{fill:var(--rb);stroke:var(--r)}.a{stroke:var(--ink);fill:none;stroke-width:1.5}
+.cur td{background:var(--gb)}
+@media(prefers-reduced-motion:no-preference){details[open]>div{animation:o .2s}@keyframes o{from{opacity:0}}}
+</style>
+</head>
+<body>
+<header>
+<p style="margin:0;color:var(--mut)">9. Sınıf · Programlama Temelleri · 1. Öğrenme Birimi</p>
+<h1>Algoritmik Düşünme ve Tasarım<br>Çalışma Defteri</h1>
+<p>Her bölümde önce konuyu oku, sonra kendi başına dene. Soruların çözümünü açmadan önce kâğıda kendi cevabını yaz. Takıldığında adım adım çözüme bak.</p>
+</header>
+<nav aria-label="Bölümler">
+<a href="#giris">Problem analizi</a><a href="#algo">Algoritma</a><a href="#sozde">Sözde kod</a><a href="#kars">Karşılaştırma</a><a href="#akis">Akış şeması</a><a href="#dongu">Döngü</a><a href="#metin">Metin</a><a href="#depo">Dijital depo</a><a href="#soru">Çözümlü sorular</a><a href="#test">Mini test</a>
+</nav>
+<main>
+
+<section id="giris">
+<h2>1. Problem analizi ve Girdi-İşlem-Çıktı (GİÇ)</h2>
+<p>Bir problemi çözmeden önce üç şeyi netleştiririz: <b>hangi verilerle başlayacağız (girdi)</b>, <b>bu verilere ne yapacağız (işlem)</b> ve <b>sonunda ne elde etmek istiyoruz (çıktı)</b>. Bu sürece <b>problem analizi</b> denir.</p>
+<table><tr><th>Bileşen</th><th>Anlamı</th><th>Bankamatik örneği</th></tr>
+<tr><td>Girdi</td><td>Dışarıdan alınan ham veri (klavye, sensör, dosya)</td><td>Kart, şifre, çekilecek tutar</td></tr>
+<tr><td>İşlem</td><td>Arka planda yapılan matematiksel/mantıksal kontroller</td><td>Şifre doğru mu? Bakiye yeterli mi? Bakiyeden düş</td></tr>
+<tr><td>Çıktı</td><td>Kullanıcıya sunulan sonuç (ekran, yazıcı, dosya, motor...)</td><td>Banknotlar, ekrandaki yeni bakiye</td></tr></table>
+<h3>Problemi bileşenlerine ayırma (decomposition)</h3>
+<p>Büyük bir problemi tek parça çözmek zordur. Onu küçük, yönetilebilir alt problemlere böleriz. Her parça ayrı ayrı yazılır ve test edilir, sonra birleştirilir. Hata riski azalır.</p>
+<div class="note"><b>Örnek:</b> Dijital oyun = karakter hareketi + ses/müzik + puanlama + kullanıcı kontrolleri. Her biri ayrı bileşendir.</div>
+<h3>Okuma-yorumlama: El-Harezmî (780–850)</h3>
+<p>“Algoritma” sözcüğü El-Harezmî’nin adının Latinceye “algoritmi” diye uyarlanmasından gelir. Bağdat’taki Beytülhikme’de çalışan bu bilgin, karmaşık problemleri <b>mantıklı, sonlu ve birbirini izleyen küçük adımlarla</b> çözme yöntemini yaygınlaştırdı. Bugünkü programlamanın temeli de budur.</p>
+<p><b>Kendine sor:</b> Telefondaki bir uygulama (ör. harita) bir problemi hangi adımlara bölüyor olabilir? Girdisi, işlemi, çıktısı ne?</p>
+</section>
+
+<section id="algo">
+<h2>2. Algoritma ve üç tasarım ölçütü</h2>
+<p><b>Algoritma:</b> Bir problemi çözmek için tasarlanan, <b>açık ve sıralı adımlardan</b> oluşan mantıksal süreçtir. Bilgisayar yorum yapmaz, yalnızca verilen komutu uygular. Bu yüzden her adım anlaşılır ve uygulanabilir olmalıdır.</p>
+<table><tr><th>Ölçüt</th><th>Soru</th><th>İhlal örneği</th></tr>
+<tr><td><b>Sonluluk</b></td><td>Algoritma belli bir süre sonra bitiyor mu?</td><td>Her koşulda başa dönen sonsuz döngü</td></tr>
+<tr><td><b>Belirlilik (kesinlik)</b></td><td>Her adım tek bir anlama geliyor mu?</td><td>“Biraz bekle”, “uygun miktarda şeker ekle”</td></tr>
+<tr><td><b>Etkinlik</b></td><td>Adımlar gerçekten yapılabilir mi?</td><td>“Sayıyı sonsuza kadar böl”</td></tr></table>
+<div class="tip">Hatırlama ipucu: <b>Biter mi? Net mi? Yapılabilir mi?</b></div>
+</section>
+
+<section id="sozde">
+<h2>3. Sözde kod ve elle çalıştırma (dry run)</h2>
+<p><b>Sözde kod</b>, algoritmanın programlama dilinin katı kuralları olmadan, günlük konuşmaya yakın ve komut tabanlı yazılmış hâlidir. Amaç, mantık hatalarını kodlamadan önce yakalamaktır.</p>
+<p><b>Dry run (elle çalıştırma):</b> Algoritmayı bilgisayarsız, kâğıt-kalemle, adım adım çalıştırmaktır. Yöntem:</p>
+<p>① Değişkenler için bir <b>izleme tablosu</b> çiz. ② İlk adımdan başla. ③ Her adımda değişkenlerin yeni değerini satıra yaz. ④ Sonda beklenen çıktıya ulaşıldı mı kontrol et.</p>
+<h3>Sözde kodda sık kullanılan kalıplar</h3>
+<table><tr><th>Kalıp</th><th>Anlamı</th></tr>
+<tr><td><code>BAŞLA.</code> / <code>DUR.</code></td><td>Algoritmanın sınırları</td></tr>
+<tr><td><code>X değerini oku</code> / <code>yazdır</code></td><td>Girdi alma / çıktı verme</td></tr>
+<tr><td><code>toplam = s1 + s2</code></td><td>Atama: sağdaki hesaplanır, soldaki değişkene yazılır (<code>=</code> “eşittir” değil “ata” anlamındadır)</td></tr>
+<tr><td><code>EĞER koşul İSE … DEĞİLSE …</code></td><td>Karar (dallanma)</td></tr>
+<tr><td><code>ADIM n’e GİT</code></td><td>Başka bir adıma atlama (döngü kurar)</td></tr></table>
+<h3>Örnek A: İki sayının toplamı</h3>
+<pre>1. BAŞLA.
+2. S1 değerini oku.
+3. S2 değerini oku.
+4. Toplam = S1 + S2
+5. Toplam değerini yazdır.
+6. DUR.</pre>
+<h3>Örnek B: Yaş kontrolü (ehliyet)</h3>
+<pre>1. BAŞLA.
+2. Sistem Tarihi (ST) değerini oku.
+3. Doğum Yılı (DY) değerini oku.
+4. Yaş = ST - DY
+5. EĞER Yaş &gt;= 18 İSE "Ehliyet alabilirsiniz." yazdır
+   DEĞİLSE "Ehliyet almak için henüz küçüksünüz." yazdır
+6. DUR.</pre>
+<div class="lab" id="lab1"><b>Dene:</b> Doğum yılını gir (ST = 2026) ve “Sonraki adım”la algoritmayı çalıştır.<br>
+DY: <input id="dy" type="number" value="2008" min="1900" max="2026" aria-label="Doğum yılı"> <button id="go1">Başlat</button> <button class="o" id="nx1" disabled>Sonraki adım</button>
+<div class="sc" id="tb1"></div></div>
+<div class="warn"><b>Sınır durumu:</b> DY = 2008 için Yaş = 18’dir. <code>&gt;=</code> kullandığımız için sonuç “Doğru”dur. Burada <code>&gt;</code> yazsaydık 18 yaşındaki biri haksız yere reddedilirdi. Ayrıca kitaptaki not önemli: bu hesap yaklaşık yaştır, gerçek yaş gün-ay-yıl ile hesaplanır.</div>
+</section>
+
+<section id="kars">
+<h2>4. Karşılaştırma operatörleri</h2>
+<p>Algoritma her zaman düz ilerlemez. Koşula göre farklı yollara sapar. İki veriyi karşılaştıran ifadenin sonucu her zaman <b>Doğru (True)</b> veya <b>Yanlış (False)</b> olur.</p>
+<table><tr><th>Operatör</th><th>Anlamı</th><th>Örnek</th><th>Ne zaman Doğru?</th></tr>
+<tr><td><code>==</code></td><td>Eşittir</td><td>tahmin == 1234</td><td>Tahmin 1234’e eşitse</td></tr>
+<tr><td><code>!=</code></td><td>Eşit değildir</td><td>sifre != "123"</td><td>Şifre "123" değilse</td></tr>
+<tr><td><code>&gt;</code></td><td>Büyüktür</td><td>yas &gt; 18</td><td>Yaş 18’den büyükse (18 dahil değil)</td></tr>
+<tr><td><code>&lt;</code></td><td>Küçüktür</td><td>sicaklik &lt; 0</td><td>0’dan küçükse</td></tr>
+<tr><td><code>&gt;=</code></td><td>Büyük eşittir</td><td>puan &gt;= 50</td><td>50 veya daha büyükse</td></tr>
+<tr><td><code>&lt;=</code></td><td>Küçük eşittir</td><td>hiz &lt;= 90</td><td>90 veya daha küçükse</td></tr></table>
+<div class="warn"><b>En sık hata:</b> <code>=</code> atama, <code>==</code> karşılaştırmadır. “Eşit mi?” diye soruyorsan <code>==</code> kullan.</div>
+<h3>Hızlı kontrol</h3>
+<div class="q" data-a="1"><b>puan = 50 iken “puan &gt; 50” sonucu nedir?</b><button>Doğru</button><button>Yanlış</button><div class="fb"></div></div>
+</section>
+
+<section id="akis">
+<h2>5. Akış şeması (flowchart)</h2>
+<p>Akış şeması, algoritmanın standart geometrik şekiller ve oklarla çizilmiş hâlidir. Programın mantığını bir bakışta gösterir. Yanlış bağlanmış ok, eksik koşul, sonsuz döngü gibi hataları kodlamadan önce yakalatır.</p>
+<div class="sc"><svg viewBox="0 0 640 120" role="img" aria-label="Akış şeması sembolleri">
+<rect class="t" x="10" y="20" width="100" height="36" rx="18"/><text x="60" y="43" text-anchor="middle">BAŞLA.</text>
+<polygon class="io" points="140,20 240,20 225,56 125,56"/><text x="182" y="43" text-anchor="middle">oku / yaz</text>
+<rect class="p" x="260" y="20" width="100" height="36"/><text x="310" y="43" text-anchor="middle">toplam = a+b</text>
+<polygon class="d" points="440,10 500,38 440,66 380,38"/><text x="440" y="42" text-anchor="middle">a &lt; b</text>
+<line class="a" x1="520" y1="38" x2="620" y2="38"/><polyline class="a" points="610,32 620,38 610,44"/>
+<text x="60" y="85" text-anchor="middle">Oval</text><text x="182" y="85" text-anchor="middle">Paralelkenar</text><text x="310" y="85" text-anchor="middle">Dikdörtgen</text><text x="440" y="95" text-anchor="middle">Eşkenar dörtgen</text><text x="570" y="62" text-anchor="middle">Ok</text></svg></div>
+<table><tr><th>Sembol</th><th>Görev</th><th>Günlük hayat</th></tr>
+<tr><td>Oval</td><td>Başlangıç ve bitiş (BAŞLA / DUR)</td><td>İşe başlama ve bitirme anı</td></tr>
+<tr><td>Paralelkenar</td><td>Giriş/çıkış: veri al, ekrana yaz</td><td>Soru sormak, cevap vermek</td></tr>
+<tr><td>Dikdörtgen</td><td>İşlem: hesap ve değişken atama</td><td>Bir eylemi yapmak</td></tr>
+<tr><td>Eşkenar dörtgen</td><td>Karar: Evet/Hayır (Doğru/Yanlış) ile iki yola ayrılır</td><td>Yol ayrımında karar vermek</td></tr>
+<tr><td>Ok</td><td>Akışın yönü</td><td>İzlenecek yol</td></tr></table>
+<div class="tip"><b>Altın kurallar:</b> (1) Tek oval BAŞLA, en az bir oval DUR. (2) Karar kutusundan <u>iki</u> ok çıkar ve etiketlenir (EVET/HAYIR). (3) Karar kutusuna uzun cümle değil kısa koşul yaz: <code>sicaklik &lt; 20</code>. (4) Her yolun sonunda DUR’a ulaşılmalı.</div>
+<h3>Örnek: Sıcaklık kontrolü (sözde kod → akış şeması)</h3>
+<pre>1. BAŞLA.  2. sicaklik oku.
+3. EĞER sicaklik &lt; 20 İSE "Isıtıcıyı çalıştır." yazdır
+   DEĞİLSE "Sıcaklık 20 °C’nin altında değildir." yazdır
+4. DUR.</pre>
+<div class="sc"><svg viewBox="0 0 560 330" role="img" aria-label="Sıcaklık kontrolü akış şeması">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="currentColor"/></marker></defs>
+<g style="color:var(--ink)">
+<rect class="t" x="230" y="5" width="100" height="32" rx="16"/><text x="280" y="26" text-anchor="middle">BAŞLA.</text>
+<line class="a" x1="280" y1="37" x2="280" y2="62" marker-end="url(#ar)"/>
+<polygon class="io" points="210,62 350,62 338,96 198,96"/><text x="274" y="84" text-anchor="middle">sicaklik oku</text>
+<line class="a" x1="280" y1="96" x2="280" y2="120" marker-end="url(#ar)"/>
+<polygon class="d" points="280,120 360,160 280,200 200,160"/><text x="280" y="164" text-anchor="middle">sicaklik &lt; 20</text>
+<polyline class="a" points="200,160 110,160 110,228" marker-end="url(#ar)"/><text x="150" y="152">EVET</text>
+<polyline class="a" points="360,160 450,160 450,228" marker-end="url(#ar)"/><text x="385" y="152">HAYIR</text>
+<polygon class="io" points="45,228 185,228 173,262 33,262"/><text x="107" y="250" text-anchor="middle">Isıtıcıyı çalıştır.</text>
+<polygon class="io" points="385,228 525,228 513,262 373,262"/><text x="450" y="250" text-anchor="middle">20 °C altında değil.</text>
+<polyline class="a" points="110,262 110,300 230,300" marker-end="url(#ar)"/><polyline class="a" points="450,262 450,300 330,300" marker-end="url(#ar)"/>
+<rect class="t" x="230" y="285" width="100" height="32" rx="16"/><text x="280" y="306" text-anchor="middle">DUR.</text></g></svg></div>
+<div class="note"><b>Not:</b> Kitaptaki Şema 1.5’te karar kutusunun EVET/HAYIR etiketleri ters görünüyor (<code>sayici &lt;= 3</code> koşulu Evet ise yazdırma yapılmalı). Öğretmeninle kontrol edip kendin düzelt, bu da güzel bir hata avcılığı çalışması.</div>
+</section>
+
+<section id="dongu">
+<h2>6. Döngü: tekrarlanan işleri yönetmek</h2>
+<p>Bir işi koşul gerçekleşene kadar tekrarlamak için <b>döngü</b> kullanırız. Sağlıklı bir döngünün üç bileşeni vardır:</p>
+<table><tr><th>Bileşen</th><th>Görevi</th><th>Örnek</th></tr>
+<tr><td>Başlangıç değeri</td><td>Döngü hangi değerden başlar</td><td>sayac = 1</td></tr>
+<tr><td>Döngü koşulu</td><td>Devam mı, bitir mi? (karar kutusu)</td><td>sayac &gt; n ise bitir</td></tr>
+<tr><td>Sayıcı (değişim)</td><td>Her turda değişkeni artırır/azaltır</td><td>sayac = sayac + 1</td></tr></table>
+<div class="warn"><b>Sonsuz döngü:</b> Sayıcıyı artırmayı unutursan veya koşul hiç değişmezse DUR’a asla ulaşılmaz. Bu, “sonluluk” ölçütünü bozar.</div>
+<h3>Örnek: 1’den n’e kadar sayıların toplamı (4. Uygulama)</h3>
+<pre>1. BAŞLA.            6. toplam = toplam + sayac
+2. n değerini oku.   7. sayac = sayac + 1
+3. toplam = 0        8. ADIM 5’e GİT.
+4. sayac = 1         9. toplam değerini yazdır.
+5. EĞER sayac &gt; n İSE ADIM 9’a GİT.   10. BİTİR.</pre>
+<div class="sc"><svg viewBox="0 0 560 360" role="img" aria-label="Ardışık sayıların toplamı akış şeması">
+<g style="color:var(--ink)">
+<rect class="t" x="40" y="5" width="90" height="28" rx="14"/><text x="85" y="24" text-anchor="middle">BAŞLA.</text>
+<line class="a" x1="85" y1="33" x2="85" y2="48" marker-end="url(#ar)"/>
+<polygon class="io" points="30,48 150,48 140,76 20,76"/><text x="85" y="67" text-anchor="middle">Oku (n)</text>
+<line class="a" x1="85" y1="76" x2="85" y2="92" marker-end="url(#ar)"/>
+<rect class="p" x="25" y="92" width="120" height="26"/><text x="85" y="110" text-anchor="middle">toplam = 0</text>
+<line class="a" x1="85" y1="118" x2="85" y2="134" marker-end="url(#ar)"/>
+<rect class="p" x="25" y="134" width="120" height="26"/><text x="85" y="152" text-anchor="middle">sayac = 1</text>
+<polyline class="a" points="85,160 85,185 230,185" marker-end="url(#ar)"/>
+<polygon class="d" points="230,185 300,215 230,245 160,215"/><text x="230" y="219" text-anchor="middle">sayac &gt; n</text>
+<polyline class="a" points="300,215 420,215 420,255" marker-end="url(#ar)"/><text x="335" y="208">EVET</text>
+<polygon class="io" points="360,255 480,255 470,283 350,283"/><text x="415" y="274" text-anchor="middle">yaz (toplam)</text>
+<line class="a" x1="415" y1="283" x2="415" y2="305" marker-end="url(#ar)"/>
+<rect class="t" x="370" y="305" width="90" height="28" rx="14"/><text x="415" y="324" text-anchor="middle">DUR.</text>
+<line class="a" x1="230" y1="245" x2="230" y2="262" marker-end="url(#ar)"/><text x="238" y="257">HAYIR</text>
+<rect class="p" x="150" y="262" width="160" height="26"/><text x="230" y="280" text-anchor="middle">toplam = toplam + sayac</text>
+<line class="a" x1="230" y1="288" x2="230" y2="304" marker-end="url(#ar)"/>
+<rect class="p" x="150" y="304" width="160" height="26"/><text x="230" y="322" text-anchor="middle">sayac = sayac + 1</text>
+<polyline class="a" points="150,317 110,317 110,185 160,215" marker-end="url(#ar)" style="display:none"/>
+<polyline class="a" points="150,317 125,317 125,200 175,205" marker-end="url(#ar)"/></g></svg></div>
+<div class="lab"><b>Dene:</b> n değerini seç ve döngünün her turunda değişkenlerin nasıl değiştiğini izle.<br>
+n: <input id="n" type="number" value="5" min="1" max="10" aria-label="n değeri"> <button id="go2">Başlat</button> <button class="o" id="nx2" disabled>Sonraki tur</button>
+<div class="sc" id="tb2"></div></div>
+<div class="note"><b>Gauss’un yöntemi:</b> 1’den 100’e toplamı 100 tur döngü yerine <code>n × (n+1) / 2</code> ile tek işlemde bulabiliriz (50 × 101 = 5050). Formül daha hızlıdır ve işlemciyi az yorar. Döngü ise her duruma uyan genel çözümdür. İyi programcı “daha verimli bir yol var mı?” diye sorar.</div>
+</section>
+
+<section id="metin">
+<h2>7. Metinsel veriler (string) ve metin birleştirme</h2>
+<p>Çift tırnak içindeki ifadelere <b>string (karakter dizisi)</b> denir: <code>"Ayşe"</code>. Metinler doğrudan aritmetik işlemde kullanılamaz. Metinleri yan yana getirmek için <code>+</code> kullanılır (concatenation).</p>
+<pre>mesaj = "Hoş Geldiniz Sayın " + isim      → isim = "Kaya" ise: Hoş Geldiniz Sayın Kaya
+tamAd = ad + " " + soyad                   → araya boşluk koymayı unutma!</pre>
+<div class="warn"><code>"5" + "3"</code> sonucu <code>"53"</code> olur (yan yana yazar), 8 olmaz. Sayıyı sayı olarak kullanmak için önce sayısal türe dönüştürmek gerekir.</div>
+<p>Akış şemasında birleştirme ve atama bir <b>işlem</b> olduğu için <b>dikdörtgen</b> ile çizilir. Ekrana yazdırma ise paralelkenardır.</p>
+</section>
+
+<section id="depo">
+<h2>8. Dijital depo, README.md ve Markdown</h2>
+<p><b>Dijital depo (repository):</b> Projenin tasarım belgelerini, algoritmalarını ve sürümlerini güvenle sakladığımız alandır (ör. GitHub). Sürümler <code>v0.1, v1.0</code> gibi numaralanır. Hiçbir proje ilk seferde mükemmel olmaz. <code>v0.1</code> ile başlar, test ve düzeltmelerle olgunlaşır.</p>
+<p><b>README.md:</b> Projenin vitrinidir. <b>Markdown</b> ise başlık, kalın yazı, liste gibi biçimlendirmeleri basit sembollerle yapan işaretleme dilidir.</p>
+<pre># Projenin Adı: Kod-Asistan v0.1
+## Projenin Amacı
+Günlük işlerde (hesaplama, selamlama) yardımcı olacak asistan.
+## Projenin Hedefleri
+- v1.0 Akıllı Menü
+- v2.0 Veri Saklama
+## Kaynakça
+- Programlama Temelleri Ders Kitabı, MEB Yayınları
+![Akış şeması](akis_semasi.png)</pre>
+<p>Sembol özeti: <code>#</code> ana başlık, <code>##</code> alt başlık, <code>-</code> veya <code>*</code> madde, <code>![açıklama](dosya.png)</code> görsel. <b>Kaynakça</b> eklemek, emeğe saygı ve dürüstlük ilkesinin yazılımdaki karşılığıdır.</p>
+<div class="note"><b>Yapay zekâ = eş-geliştirici.</b> Yapay zekânın ürettiği çıktıyı sen denetlersin. Önce kendi çözümünü kur, sonra karşılaştır. Eksik adım, belirsiz koşul veya hatalı mantık olabilir.</div>
+</section>
+
+<section id="soru">
+<h2>9. Çözümlü sorular</h2>
+<p>Önce kendin dene, sonra çözümü aç.</p>
+
+<details><summary>Soru 1 (GİÇ): Otomat makinesini girdi-işlem-çıktı olarak analiz et.</summary><div>
+<p><b>Adım 1 – Girdiler:</b> atılan para, seçilen ürün kodu.</p>
+<p><b>Adım 2 – İşlemler (sırayla):</b> ürün stokta mı? → atılan para ≥ fiyat mı? → bakiye = para − fiyat hesapla → stoku 1 azalt.</p>
+<p><b>Adım 3 – Çıktılar:</b> ürünün düşmesi, para üstü, ekranda “Afiyet olsun” mesajı.</p>
+<p><b>Kontrol:</b> Girdiyi “işlem” ile, çıktıyı “sonuç” ile karıştırma. Para üstü hesaplamak işlemdir, para üstünü vermek çıktıdır.</p></div></details>
+
+<details><summary>Soru 2 (dry run): DY = 2012 için yaş kontrolü algoritmasını elle çalıştır (ST = 2026).</summary><div>
+<p>Adım 4: Yaş = 2026 − 2012 = <b>14</b>.</p>
+<p>Adım 5: 14 &gt;= 18 ? → <b>Hayır</b> (Yanlış) → DEĞİLSE kolu çalışır.</p>
+<p><b>Çıktı:</b> “Ehliyet almak için henüz küçüksünüz.” → Adım 6: DUR.</p></div></details>
+
+<details><summary>Soru 3 (hata avcılığı): Aşağıdaki sözde kodun neden hiç DUR’a ulaşmadığını bul ve düzelt.</summary><div>
+<pre>3. sifre al.
+4. EĞER sifre == sistem_sifresi İSE "Giriş başarılı." yazdır.
+5. "Hatalı şifre girdiniz, tekrar deneyiniz." yazdır ve 3. adıma git.
+6. DUR.</pre>
+<p><b>Neden?</b> 4. adım doğru olsa bile akış 5. adıma düşer. “Giriş başarılı” yazıldıktan hemen sonra “Hatalı şifre” de yazılır ve 3. adıma gidilir. Hiçbir yolda 6’ya ulaşılmaz, yani <b>sonluluk ölçütü</b> bozulur. İkinci sorun: doğru şifre, hata mesajıyla çelişir.</p>
+<p><b>Düzeltme:</b> Başarı durumunda DUR’a atla, hata durumunu DEĞİLSE altına al.</p>
+<pre>4. EĞER sifre == sistem_sifresi İSE "Giriş başarılı." yazdır ve ADIM 6’ya GİT.
+5. DEĞİLSE "Hatalı şifre girdiniz, tekrar deneyiniz." yazdır ve ADIM 3’e GİT.
+6. DUR.</pre></div></details>
+
+<details><summary>Soru 4 (akış şeması hatası): Sayıyı okuyup Pozitif / Negatif / Sıfır yazan şemada kitaptaki hatalı taslağı onar.</summary><div>
+<p>Taslakta karar: <code>sayi1 &gt; 0</code>, EVET → “Negatif yaz”, HAYIR → “Pozitif yaz”, DUR’a ok ters.</p>
+<table><tr><th>Hata</th><th>Neden hatalı?</th><th>Düzeltme</th></tr>
+<tr><td>EVET/HAYIR kolları ters</td><td>0’dan büyük sayı pozitiftir</td><td>EVET → “Pozitif yaz”</td></tr>
+<tr><td>Sıfır durumu yok</td><td>0 “pozitif” sayılıyor</td><td>İkinci karar ekle: <code>sayi1 &lt; 0</code>; HAYIR kolunda “Sıfır yaz”</td></tr>
+<tr><td>DUR’a giden ok ters yönde</td><td>Akış sona ulaşamaz</td><td>Okun ucunu DUR’a çevir</td></tr>
+<tr><td>Yollar tek DUR’da birleşmiyor</td><td>Bazı kollar açıkta kalır</td><td>Üç çıktı kolunu da DUR’a bağla</td></tr></table>
+<p><b>Doğru akış:</b> BAŞLA → Oku(sayi1) → <code>sayi1 &gt; 0</code>? EVET: “Pozitif yaz” → DUR. HAYIR: <code>sayi1 &lt; 0</code>? EVET: “Negatif yaz” → DUR; HAYIR: “Sıfır yaz” → DUR.</p></div></details>
+
+<details><summary>Soru 5 (kritik eşik): Su seviyesi 50 m’yi aşınca döngüyü kıran sözde kodu yaz ve 42, 48, 55 m ile test et.</summary><div>
+<pre>1. BAŞLA.
+2. saat = 1
+3. su_seviyesi’ni oku.
+4. EĞER su_seviyesi &gt; 50 İSE ADIM 7’ye GİT.
+5. saat = saat + 1
+6. ADIM 3’e GİT.
+7. "Tahliye saati:" saat ve su_seviyesi’ni yazdır.
+8. DUR.</pre>
+<table><tr><th>Tur</th><th>saat</th><th>su_seviyesi</th><th>su &gt; 50 ?</th></tr>
+<tr><td>1</td><td>1</td><td>42</td><td>Hayır → saat 2 olur</td></tr>
+<tr><td>2</td><td>2</td><td>48</td><td>Hayır → saat 3 olur</td></tr>
+<tr><td>3</td><td>3</td><td>55</td><td><b>Evet</b> → 7. adım</td></tr></table>
+<p><b>Sonuç:</b> Tahliye 3. saatte, seviye 55 m. Beklenen sonuçla aynı, mantık doğru. <b>Dikkat:</b> Koşulu 5’ten sonra yazarsan saat yanlış sayılır. Karar adımının sırası önemlidir.</p></div></details>
+
+<details><summary>Soru 6 (metin birleştirme): Ad ve soyadı ayrı alıp “Sayın Ad Soyad” profil kimliği üreten algoritmayı yaz.</summary><div>
+<pre>1. BAŞLA.
+2. ad oku.        3. soyad oku.
+4. profil = "Sayın " + ad + " " + soyad
+5. profil yazdır.
+6. DUR.</pre>
+<p>Test: ad = "Elif", soyad = "Demir" → <code>Sayın Elif Demir</code>. Akış şemasında 4. adım <b>dikdörtgen</b>, okuma/yazma <b>paralelkenar</b>.</p></div></details>
+</section>
+
+<section id="test">
+<h2>10. Mini test</h2>
+<div class="q" data-a="2"><b>1. “Biraz bekle” komutu içeren bir algoritma hangi ölçütü bozar?</b><button>Sonluluk</button><button>Etkinlik</button><button>Belirlilik</button><div class="fb"></div></div>
+<div class="q" data-a="0"><b>2. Karar (koşul) kontrolü hangi sembolle gösterilir?</b><button>Eşkenar dörtgen</button><button>Oval</button><button>Dikdörtgen</button><div class="fb"></div></div>
+<div class="q" data-a="1"><b>3. toplam = toplam + sayac işlemi akış şemasında hangi sembolle çizilir?</b><button>Paralelkenar</button><button>Dikdörtgen</button><button>Eşkenar dörtgen</button><div class="fb"></div></div>
+<div class="q" data-a="2"><b>4. Döngüde sayıcı artırılmazsa ne olur?</b><button>Program hızlanır</button><button>Koşul hep Doğru olur ve döngü biter</button><button>Sonsuz döngü oluşabilir</button><div class="fb"></div></div>
+<div class="q" data-a="0"><b>5. "Ali" + " " + "Veli" sonucu nedir?</b><button>Ali Veli</button><button>AliVeli</button><button>Hata, metinler birleşmez</button><div class="fb"></div></div>
+<div class="q" data-a="1"><b>6. README.md’de ana başlık için hangi işaret kullanılır?</b><button>*</button><button>#</button><button>!</button><div class="fb"></div></div>
+<p id="sk" style="font-weight:600"></p>
+</section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+function tracer(box,go,nx,head,rows){let k=0,tb=$(box),g=$(go),n=$(nx);
+function draw(){tb.innerHTML='<table><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr>'+rows.slice(0,k).map((r,i)=>'<tr'+(i==k-1?' class="cur"':'')+'>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</table>'+(k>=rows.length?'<p><b>Algoritma bitti.</b></p>':'')+'';n.disabled=k>=rows.length}
+return{start(r){rows=r;k=1;draw()},next(){k++;draw()}}}
+let t1=null,t2=null;
+$('#go1').onclick=()=>{const dy=+$('#dy').value,st=2026,y=st-dy,ok=y>=18;
+const rows=[['BAŞLA.','-','-','-','-'],['ST oku',st,'-','-','-'],['DY oku',st,dy,'-','-'],['Yaş = ST - DY',st,dy,y,'-'],['Yaş &gt;= 18 ? → '+(ok?'Evet':'Hayır'),st,dy,y,ok?'Ehliyet alabilirsiniz.':'Ehliyet almak için henüz küçüksünüz.'],['DUR.',st,dy,y,'-']];
+t1=tracer('#tb1','#go1','#nx1',['İşlem','ST','DY','Yaş','Çıktı'],rows);t1.start(rows)};
+$('#nx1').onclick=()=>t1.next();
+$('#go2').onclick=()=>{const n=Math.min(10,Math.max(1,+$('#n').value||1));let s=0,c=1;const rows=[['Başlangıç',1,0,'-']];
+for(;c<=n;c++){s+=c;rows.push(['Tur '+c,c,s,'Hayır ('+c+' &gt; '+n+' değil)'])}
+rows.push(['Bitiş',n+1,s,'Evet ('+(n+1)+' &gt; '+n+') → yazdır: '+s]);
+t2=tracer('#tb2','#go2','#nx2',['Adım / Döngü','sayac (tur başı)','toplam','Koşul (sayac &gt; n)'],rows);t2.start(rows)};
+$('#nx2').onclick=()=>t2.next();
+let sc=0,tot=0;
+document.querySelectorAll('.q').forEach(q=>{const bs=q.querySelectorAll('button'),a=+q.dataset.a;let done=false;
+bs.forEach((b,i)=>b.onclick=()=>{if(done)return;done=true;const ok=i==a;b.classList.add(ok?'ok':'no');bs[a].classList.add('ok');
+q.querySelector('.fb').textContent=ok?'Doğru!':'Doğru cevap: '+bs[a].textContent+'. Bölümü tekrar oku ve dene.';
+if(q.closest('#test')){tot++;if(ok)sc++;$('#sk').textContent='Skor: '+sc+' / '+tot}})});
+</script>
+</body>
+</html>
