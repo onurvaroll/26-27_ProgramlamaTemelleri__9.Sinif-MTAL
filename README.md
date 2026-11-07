@@ -16,6 +16,10 @@
 - Konuyu tekrar etmek veya sınavdan önce pekiştirmek isteyenler
 - Öğrencilerine ek kaynak önermek isteyen öğretmenler
 
+## Python Nedir?
+- Python'ın ne işe yaradığına dair tüm bilgilere buradan ulaşabilirsiniz:
+**👉 [Python Nedir?](https://github.com/onurvaroll/26-27_ProgramlamaTemelleri__9.Sinif-MTAL/tree/main/python_hakkında)**
+
 ## Neler var?
 
 | Bölüm | Neler içeriyor? |
