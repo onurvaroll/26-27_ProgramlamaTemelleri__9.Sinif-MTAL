@@ -8,7 +8,7 @@
 
 ## 🔗 Çalışma sayfasına git
 
-**👉 [Çalışma Defterini Aç] (https://pt-etkilesimli-site.onrender.com/) **
+**👉 [Çalışma Defterini Aç](https://pt-etkilesimli-site.onrender.com/)**
 
 ## Bu çalışma defteri kimin için?
 
