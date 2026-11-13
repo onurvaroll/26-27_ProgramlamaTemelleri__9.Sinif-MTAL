@@ -8,7 +8,8 @@
 
 ## 🔗 Çalışma sayfasına git
 
-**👉 [Çalışma Defterini Aç](https://onurvaroll.github.io/pt_etkilesimli_site/)**
+**👉 [Çalışma Defterini Aç] (https://pt-etkilesimli-site.onrender.com/)**
+// (https://onurvaroll.github.io/pt_etkilesimli_site/)**
 
 ## Bu çalışma defteri kimin için?
 
